@@ -4,11 +4,6 @@ on:
   pull_request:
     types:
       - opened
-      - synchronize
-      - reopened
-      - labeled
-      - review_requested
-      - review_request_removed
 
 jobs:
   initial_steps:
