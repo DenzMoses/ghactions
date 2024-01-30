@@ -17,6 +17,6 @@ jobs:
     
         - name: Run Final Steps
           run: |
-            pytest --cov=python --cov-fail-under=60
+            pytest --cov=. --cov-fail-under=60
 
 
