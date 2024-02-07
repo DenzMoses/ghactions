@@ -1,9 +1,6 @@
 name: Deploy Workflow new
 
-on:
-  push:
-    branches:
-      - main
+
 
 jobs:
   manual_approval:
