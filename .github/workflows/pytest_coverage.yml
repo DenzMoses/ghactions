@@ -18,4 +18,4 @@ jobs:
           pip install pytest pytest-cov
 
       - name: Run Final Steps
-        run: pytest --cov=. --cov-fail-under=" ${{ vars.coveragepercentage }}"
+        run: pytest --cov=. --cov-fail-under=" ${{ vars.coverage }}"
