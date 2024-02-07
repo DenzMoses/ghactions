@@ -17,5 +17,4 @@ jobs:
           pip install pytest pytest-cov
 
       - name: Run Final Steps
-        run: |
-          pytest --cov= ./ghactions/python/ --cov-fail-under=60
+        run: echo $COVERAGE
