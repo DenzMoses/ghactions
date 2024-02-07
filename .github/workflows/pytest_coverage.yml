@@ -8,7 +8,8 @@ on:
 jobs:
   initial_steps:
     runs-on: ubuntu-latest
-
+    env: dev
+    
     steps:
     
       - name: Install Dependencies
