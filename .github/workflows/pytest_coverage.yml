@@ -17,4 +17,4 @@ jobs:
           pip install pytest pytest-cov
 
       - name: Run Final Steps
-        run: echo "Code Coverage: ${{ env.CODE_COVERAGE }}%"
+        run: echo "Code Coverage: ${{ env.COVERAGE }}%"
