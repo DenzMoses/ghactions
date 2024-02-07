@@ -17,4 +17,4 @@ jobs:
           pip install pytest
 
       - name: Run Final Steps
-        run: echo "coverage is $vars.COVERAGE"
+        run: echo "coverage is ${{ variables.COVERAGE }}"
