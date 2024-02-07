@@ -8,7 +8,7 @@ on:
 jobs:
   initial_steps:
     runs-on: ubuntu-latest
-    env: dev
+    environment: dev
     
     steps:
     
