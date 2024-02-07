@@ -18,4 +18,4 @@ jobs:
           pip install pytest
 
       - name: Run Final Steps
-        run: echo "Coverage is ${{ env.coveragepercentage }}"
+        run: echo "Coverage is ${{ vars.coveragepercentage }}"
