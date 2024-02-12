@@ -20,7 +20,7 @@ jobs:
       - name: printing
         run: | 
           echo "Branch name: ${{ github.ref }}"
-          if [ "${{ github.ref_name }}" == 'refs/heads/main' ]; then
+          if [ "${{ github.ref_name }}" == 'main' ]; then
             echo "This is a pull request event"
           else
             echo "this is not"
