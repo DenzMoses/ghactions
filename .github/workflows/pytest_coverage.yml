@@ -19,4 +19,14 @@ jobs:
 
       - name: Run Final Steps
         run: pytest --cov=. --cov-fail-under=" ${{ vars.coverageper }}"
+
+      - name: printing
+        run: | 
+          echo "dev success"
+          if [ "${{ github.ref_name }}" == 'refs/heads/main' ]; then
+            echo "This is a pull request event"
+          else
+            echo "this is not"
+          fi
+       
         
