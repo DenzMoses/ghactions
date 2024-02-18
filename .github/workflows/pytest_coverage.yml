@@ -17,12 +17,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest
 
-      - name: printing
-        run: | 
-          echo "Branch name: ${{ github.ref }}"
-          if [ "${{ github.ref_name }}" == 'main' ]; then
-            echo "This is a pull request event"
-          else
-            echo "this is not"
-          fi
+      - name: Notify Slack on Success
+        if: success()
+        uses: rtCamp/action-slack-notify@master
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_TITLE: 'Deployment Successful'
+          SLACK_COLOR: '#36a64f'
         
