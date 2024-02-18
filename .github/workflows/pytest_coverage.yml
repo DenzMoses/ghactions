@@ -1,4 +1,4 @@
-name: Main CI Build Workflow
+name: Main CI Build Workflow for slack
 
 on:
   push:
