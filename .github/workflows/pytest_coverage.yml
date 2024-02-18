@@ -20,6 +20,7 @@ jobs:
           pip install pytest
 
       - name: Notify Slack on Success
+        uses: ./https://github.com/DenzMoses/action-slack-notify.git
         if: success()
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
