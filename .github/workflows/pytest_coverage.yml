@@ -6,24 +6,27 @@ on:
       - main
 
 jobs:
-  initial_steps:
+  notify_slack:
     runs-on: ubuntu-latest
-    environment: dev
-    
+
     steps:
-      - name: Checkout Repository
-        uses: ./https://github.com/DenzMoses/checkout.git
-        
-      - name: Install Dependencies
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Install pip
         run: |
           python -m pip install --upgrade pip
-          pip install pytest
+          pip install -r requirements.txt
 
       - name: Notify Slack on Success
-        uses: ./https://github.com/DenzMoses/action-slack-notify.git
         if: success()
+        uses: ./https://github.com/DenzMoses/action-slack-notify.git
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_TITLE: 'Deployment Successful'
           SLACK_COLOR: '#36a64f'
-        
