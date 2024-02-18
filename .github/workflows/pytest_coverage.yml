@@ -19,7 +19,7 @@ jobs:
 
       - name: Notify Slack on Success
         if: success()
-        uses: rtCamp/action-slack-notify@v2.2.1
+        uses: ./https://github.com/DenzMoses/action-slack-notify.git
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_TITLE: 'Deployment Successful'
