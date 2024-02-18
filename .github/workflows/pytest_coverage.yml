@@ -21,11 +21,10 @@ jobs:
       - name: Install pip
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
 
       - name: Notify Slack on Success
         if: success()
-        uses: ./https://github.com/DenzMoses/action-slack-notify.git
+        uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_TITLE: 'Deployment Successful'
