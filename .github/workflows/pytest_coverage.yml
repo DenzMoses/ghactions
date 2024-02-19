@@ -33,11 +33,11 @@ jobs:
           key: "${{ github.ref_name }}"
           map: |
             {
-              "dev": {
+              "main": {
                 "slack_webhook": "https://hooks.slack.com/services/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",
                 "channel": "devops"
               },
-              "stage": {
+              "main": {
                 "slack_webhook": "https://hooks.slack.com/services/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",
                 "channel": "devops-failure"
               }
