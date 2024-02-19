@@ -26,4 +26,39 @@ jobs:
         if: ${{ success() }}
         run: echo '${{ github.job }} is successful'
 
+      - name: Mapping for slack notifications
+        uses: kanga333/variable-mapper@v0.3.0
+        id: environment
+        with:
+          key: "${{ github.ref_name }}"
+          map: |
+            {
+              "dev": {
+                "slack_webhook": "https://hooks.slack.com/services/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",
+                "channel": "devops"
+              },
+              "stage": {
+                "slack_webhook": "https://hooks.slack.com/services/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",
+                "channel": "devops-failure"
+              }
+            }   
+      - name: Notify slack on success
+        if: ${{ success() }}
+        uses: rtCamp/action-slack-notify@v2
+        with:
+          status: '${{ github.event_name }} Deployment is successful'
+          slack-webhook: ${{ steps.environment.outputs.slack_webhook }}
+          channel: ${{ steps.environment.outputs.channel }}
+          color: "#228B22"  
+
+      - name: Notify slack on failure
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2
+        with:
+          status: ${{ github.event_name }} Deployment Failure
+          slack-webhook: ${{ steps.environment.outputs.slack_webhook }}
+          channel: ${{ steps.environment.outputs.channel }}
+          color: "#E01E5A" 
+
+
       
