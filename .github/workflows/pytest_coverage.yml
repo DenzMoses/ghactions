@@ -23,6 +23,7 @@ jobs:
           python -m pip install --upgrade pip
 
       - name: eventofthejob
+        if: ${{ success() }}
         run: echo '${{ github.job }} is successful'
 
       
