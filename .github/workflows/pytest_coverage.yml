@@ -25,20 +25,4 @@ jobs:
       - name: eventofthejob
         run: ${{ github.job }}
 
-      - name: Notify Slack on Success
-        if: success()
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_TITLE: 'Deployment Successful'
-          SLACK_COLOR: '#36a64f'
-
-      - name: Notify Slack on Failure
-        if: failure()
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_FAILURE }}
-          SLACK_TITLE: 'Deployment Successful'
-          SLACK_COLOR: '#36a64f'
-
       
