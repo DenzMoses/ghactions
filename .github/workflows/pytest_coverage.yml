@@ -23,6 +23,6 @@ jobs:
           python -m pip install --upgrade pip
 
       - name: eventofthejob
-        run: ${{ github.job }}
+        run: echo "The job name is ${{ github.job }}"
 
       
