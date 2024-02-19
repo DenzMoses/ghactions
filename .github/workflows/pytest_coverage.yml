@@ -22,7 +22,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
 
-      - name: event name
+      - name: eventofthejob
         run: ${{ github.job }}
 
       - name: Notify Slack on Success
