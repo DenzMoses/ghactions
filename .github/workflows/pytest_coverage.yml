@@ -34,11 +34,9 @@ jobs:
           map: |
             {
               "main": {
-                "slack_webhook": "https://hooks.slack.com/services/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",
                 "channel": "devops"
               },
               "main": {
-                "slack_webhook": "https://hooks.slack.com/services/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",
                 "channel": "devops-failure"
               }
             }   
@@ -47,7 +45,7 @@ jobs:
         if: ${{ success() }}
         uses: rtCamp/action-slack-notify@v2
         with:
-          slack-webhook: ${{ steps.environment.outputs.slack_webhook }}
+          slack-webhook: "https://hooks.slack.com/services/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"
           channel: ${{ steps.environment.outputs.channel }}
           color: "#228B22" # or a specific color like 'good' or '#ff00ff'
           icon: https://github.com/rtCamp.png?size=48
@@ -58,7 +56,7 @@ jobs:
         if: ${{ failure() }}
         uses: rtCamp/action-slack-notify@v2
         with:
-          slack-webhook: ${{ steps.environment.outputs.slack_webhook }}
+          slack-webhook: "https://hooks.slack.com/services/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"
           channel: ${{ steps.environment.outputs.channel }}
           color: "#E01E5A" # or a specific color like 'danger' or '#ff0000'
           icon: https://github.com/rtCamp.png?size=48
