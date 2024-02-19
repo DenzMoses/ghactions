@@ -23,7 +23,7 @@ jobs:
           python -m pip install --upgrade pip
 
       - name: event name
-        run: ${{ github.event_name }}
+        run: ${{ github.action }}
 
       - name: Notify Slack on Success
         if: success()
