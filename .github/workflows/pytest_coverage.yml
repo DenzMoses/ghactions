@@ -21,10 +21,41 @@ jobs:
       - name: Install pip
         run: |
           python -m pip install --upgrade pip
-      - name: Notify Slack on Success
-        if: success()
+
+
+      - name: Mapping for slack notifications
+        uses: kanga333/variable-mapper@v0.3.0
+        id: environment
+        with:
+          key: "${{ github.ref_name }}"
+          map: |
+            {
+              "dev": {
+                "channel": "devops"
+              },
+              "stage": {
+                "channel": "deploy-flywheel-stage"
+              },
+              "prod": {
+                "channel": "devops-failure"
+              }
+            }
+
+
+      - name: Notify slack on success
+        if: ${{ success() }}
         uses: rtCamp/action-slack-notify@v2
         env:
+          SLACK_CHANNEL: ${{ steps.environment.outputs.channel }}
+          SLACK_COLOR: "#228B22"  
+          SLACK_MESSAGE: "${{ github.job }} is successful"
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_TITLE: 'Deployment Successful'
-          SLACK_COLOR: '#36a64f'
+
+      - name: Notify slack on Failure
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_CHANNEL: ${{ steps.environment.outputs.channel }}
+          SLACK_COLOR: "#228B22"  
+          SLACK_MESSAGE: "${{ github.job }} is successful"
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_FAILURE }}
