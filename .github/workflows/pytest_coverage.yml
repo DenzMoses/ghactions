@@ -35,15 +35,13 @@ jobs:
                 "channel": "devops"
               },
               "stage": {
-                "channel": "deploy-flywheel-stage"
-              },
-              "prod": {
+                "slack_webhook": "${{ secrets.SLACK_WEBHOOK_FAILURE }}",
                 "channel": "devops-failure"
-              }
+              },
             }
             
       - name: Check environment mapping
-        run: echo '${{ steps.environment.outputs }}'
+        run: echo '${{ steps.environment.outputs.slack_webhook }}'
 
       - name: Notify slack on success
         if: ${{ success() }}
