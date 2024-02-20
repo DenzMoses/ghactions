@@ -30,7 +30,7 @@ jobs:
           key: "${{ github.ref_name }}"
           map: |
             {
-              "dev": {
+              "main": {
                 "slack_webhook": "${{ secrets.SLACK_WEBHOOK }}",
                 "channel": "devops"
               },
