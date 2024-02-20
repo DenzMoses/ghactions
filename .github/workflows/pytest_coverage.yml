@@ -43,7 +43,7 @@ jobs:
             }
             
       - name: Check environment mapping
-        run: echo "Environment mapping: ${{ steps.environment.outputs }}"
+        run: echo '${{ steps.environment.outputs }}'
 
       - name: Notify slack on success
         if: ${{ success() }}
