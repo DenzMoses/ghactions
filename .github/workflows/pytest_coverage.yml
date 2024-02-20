@@ -21,44 +21,10 @@ jobs:
       - name: Install pip
         run: |
           python -m pip install --upgrade pip
-
-      - name: eventofthejob
-        if: ${{ success() }}
-        run: echo '${{ github.job }} is successful'
-
-      - name: Mapping for slack notifications
-        uses: kanga333/variable-mapper@v0.3.0
-        id: environment
-        with:
-          key: "${{ github.ref_name }}"
-          map: |
-            {
-              "main": {
-                "channel": "devops"
-              },
-              "main": {
-                "channel": "devops-failure"
-              }
-            }   
-
-      - name: Notify slack on success
-        if: ${{ success() }}
+      - name: Notify Slack on Success
+        if: success()
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_CHANNEL: ${{ steps.environment.outputs.channel }}
-          SLACK_COLOR: "#228B22" # or a specific color like 'good' or '#ff00ff'
-          SLACK_ICON: https://github.com/rtCamp.png?size=48
-          SLACK_MESSAGE: 'Post Content :rocket:'
-          SLACK_TITLE: Post Title
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-
-      - name: Notify slack on failure
-        if: ${{ failure() }}
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_CHANNEL: ${{ steps.environment.outputs.channel }}
-          SLACK_COLOR: "#228B22" # or a specific color like 'good' or '#ff00ff'
-          SLACK_ICON: https://github.com/rtCamp.png?size=48
-          SLACK_MESSAGE: 'Post Content :rocket:'
-          SLACK_TITLE: Post Title
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_TITLE: 'Deployment Successful'
+          SLACK_COLOR: '#36a64f'
