@@ -37,7 +37,7 @@ jobs:
               "stage": {
                 "slack_webhook": "${{ secrets.SLACK_WEBHOOK_FAILURE }}",
                 "channel": "devops-failure"
-              },
+              }
             }
             
       - name: Check environment mapping
