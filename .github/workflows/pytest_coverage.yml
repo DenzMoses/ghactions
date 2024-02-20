@@ -44,21 +44,21 @@ jobs:
       - name: Notify slack on success
         if: ${{ success() }}
         uses: rtCamp/action-slack-notify@v2
-        with:
-          slack-webhook: ${{ secrets.SLACK_WEBHOOK }}
-          channel: ${{ steps.environment.outputs.channel }}
-          color: "#228B22" # or a specific color like 'good' or '#ff00ff'
-          icon: https://github.com/rtCamp.png?size=48
-          message: 'Post Content :rocket:'
-          title: Post Title
+        env:
+          SLACK_CHANNEL: ${{ steps.environment.outputs.channel }}
+          SLACK_COLOR: "#228B22" # or a specific color like 'good' or '#ff00ff'
+          SLACK_ICON: https://github.com/rtCamp.png?size=48
+          SLACK_MESSAGE: 'Post Content :rocket:'
+          SLACK_TITLE: Post Title
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
       - name: Notify slack on failure
         if: ${{ failure() }}
         uses: rtCamp/action-slack-notify@v2
-        with:
-          slack-webhook: ${{ secrets.SLACK_WEBHOOK_FAILURE }}
-          channel: ${{ steps.environment.outputs.channel }}
-          color: "#E01E5A" # or a specific color like 'danger' or '#ff0000'
-          icon: https://github.com/rtCamp.png?size=48
-          message: 'Post Content :rocket:'
-          title: Post Title
+        env:
+          SLACK_CHANNEL: ${{ steps.environment.outputs.channel }}
+          SLACK_COLOR: "#228B22" # or a specific color like 'good' or '#ff00ff'
+          SLACK_ICON: https://github.com/rtCamp.png?size=48
+          SLACK_MESSAGE: 'Post Content :rocket:'
+          SLACK_TITLE: Post Title
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
