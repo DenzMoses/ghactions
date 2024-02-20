@@ -31,7 +31,7 @@ jobs:
           map: |
             {
               "dev": {
-                "slack_webhook": "https://hooks.slack.com/services/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"
+                "slack_webhook": "https://hooks.slack.com/services/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",
                 "channel": "devops"
               },
               "stage": {
