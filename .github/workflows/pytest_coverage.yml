@@ -35,8 +35,8 @@ jobs:
                 "channel": "devops"
               },
               "stage": {
-                "slack_webhook": "${{ secrets.SLACK_WEBHOOK_FAILURE }}",
-                "channel": "devops-failure"
+                "slack_webhook": "${{ secrets.SLACK_PRIMARY }}",
+                "channel": "devops-primary"
               }
             }
             
@@ -58,5 +58,5 @@ jobs:
         env:
           SLACK_CHANNEL: ${{ steps.environment.outputs.channel }}
           SLACK_COLOR: "#228B22"  
-          SLACK_MESSAGE: "${{ github.job }} is successful"
+          SLACK_MESSAGE: "${{ github.job }} is Failure"
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_FAILURE }}
