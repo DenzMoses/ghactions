@@ -21,11 +21,11 @@ jobs:
           map: |
             {
               "main": {
-                "slack_webhook": "${{ secrets.SLACK_WEBHOOK }}",
+                "slack_webhook": "${{ https://hooks.slack.com/services/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 }}",
                 "channel": "devops"
               },
               "stage": {
-                "slack_webhook": "${{ secrets.SLACK_PRIMARY }}",
+                "slack_webhook": "${{ https://hooks.slack.com/services/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 }}",
                 "channel": "devops-primary"
               }
             }
