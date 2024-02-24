@@ -41,7 +41,7 @@ jobs:
             }
             
       - name: Check environment mapping
-        run: echo '${{ steps.environment.outputs.slack_webhook }}'
+        run: echo '${{ steps.environment.outputs }}'
 
       - name: Notify slack on success
         if: ${{ success() }}
