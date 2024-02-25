@@ -29,9 +29,7 @@ jobs:
                 "channel": "devops-primary"
               }
             }
-            
-      - name: Check environment mapping
-        run: echo '${{ steps.environment.outputs }}
+          
 
       - name: Notify slack on success
         if: ${{ success() }}
