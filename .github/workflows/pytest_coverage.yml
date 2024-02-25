@@ -30,7 +30,9 @@ jobs:
               }
             }
           
-
+      - name: print output
+        run: echo "${{ SLACK_CHANNEL }}"
+        
       - name: Notify slack on success
         if: ${{ success() }}
         uses: rtCamp/action-slack-notify@v2
