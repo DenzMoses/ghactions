@@ -21,32 +21,23 @@ jobs:
           map: |
             {
               "main": {
-                "slack_webhook": "https://hooks.slack.com/services/xxx",
+                "slack_webhook": "https://hooks.slack.com/services/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",
                 "channel": "devops"
               },
               "stage": {
-                "slack_webhook": "https://hooks.slack.com/services/xxx",
+                "slack_webhook": "https://hooks.slack.com/services/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",
                 "channel": "devops-primary"
               }
             }
             
       - name: Check environment mapping
-        run: echo '${{ steps.environment.outputs }}'
+        run: echo '${{ steps.environment.outputs }}
 
       - name: Notify slack on success
         if: ${{ success() }}
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_CHANNEL: ${{ steps.environment.outputs.channel }}
+          SLACK_CHANNEL: ${{ steps.environment.outputs[steps.environment.outputs.environment].channel }}
           SLACK_COLOR: "#228B22"  
           SLACK_MESSAGE: "${{ github.job }} is successful"
-          SLACK_WEBHOOK: ${{ steps.environment.outputs.slack_webhook }}
-
-      - name: Notify slack on Failure
-        if: ${{ failure() }}
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_CHANNEL: ${{ steps.environment.outputs.channel }}
-          SLACK_COLOR: "#228B22"  
-          SLACK_MESSAGE: "${{ github.job }} is Failure"
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_FAILURE }}
+          SLACK_WEBHOOK: ${{ steps.environment.outputs[steps.environment.outputs.environment].slack_webhook }}
