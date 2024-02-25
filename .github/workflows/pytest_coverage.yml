@@ -46,7 +46,7 @@ jobs:
         if: ${{ failure() }}
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_CHANNEL: ${{ steps.environment.outputs[steps.environment.outputs.environment].channel }}
+          SLACK_CHANNEL: "${{ steps.environment.outputs[steps.environment.outputs.environment].channel }}"
           SLACK_COLOR: "#228B22"  
           SLACK_MESSAGE: "${{ github.job }} is Failure"
-          SLACK_WEBHOOK: ${{ secrets.SLACK_FAILURE }}
+          SLACK_WEBHOOK: "${{ steps.environment.outputs[steps.environment.outputs.environment].slack_webhook }}"
