@@ -21,12 +21,12 @@ jobs:
           map: |
             {
               "main": {
-                "slack_webhook": "${{ secrets.SLACK_SUCCESS }}",
-                "channel": "devops"
+                "SLACK_WEBHOOK": "${{ secrets.SLACK_SUCCESS }}",
+                "SLACK_CHANNEL": "devops"
               },
               "stage": {
-                "slack_webhook": "${{ secrets.SLACK_FAILURE }}",
-                "channel": "devops-primary"
+                "SLACK_WEBHOOK": "${{ secrets.SLACK_FAILURE }}",
+                "SLACK_CHANNEL": "devops-primary"
               }
             }
           
@@ -35,9 +35,7 @@ jobs:
         if: ${{ success() }}
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_CHANNEL: "${{ steps.environment.outputs[steps.environment.outputs.environment].channel }}"
           SLACK_COLOR: "#228B22"  
           SLACK_MESSAGE: "${{ github.job }} is successful"
-          SLACK_WEBHOOK: "${{ steps.environment.outputs[steps.environment.outputs.environment].slack_webhook }}"
         
      
