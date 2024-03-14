@@ -17,7 +17,7 @@ jobs:
         - name: Repository Dispatch
           uses: peter-evans/repository-dispatch@v3
           with:
-            token: ${{ secrets.PAT }}
+            token: ${{ secrets.GITHUB_TOKEN }}
             repository: DenzMoses/wf-dispatch
             event-type: my-event
       # - name: Checkout repository
