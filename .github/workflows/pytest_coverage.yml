@@ -19,7 +19,7 @@ jobs:
           with:
             repository: DenzMoses/wf-dispatch
             event-type: my-event
-            token: ${{ github.token }}
+            token: ${{ secrets.PAT1 }}
       # - name: Checkout repository
       #   uses: actions/checkout@v3
 
