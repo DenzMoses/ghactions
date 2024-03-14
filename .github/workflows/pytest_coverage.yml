@@ -10,31 +10,41 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+        - name: Checkout repository
+          uses: actions/checkout@v3
 
-      - name: Mapping for slack notifications
-        uses: kanga333/variable-mapper@v0.3.0
-        id: environment
-        with:
-          key: "${{ github.ref_name }}"
-          map: |
-            {
-              "main": {
-                "SLACK_WEBHOOK": "${{ secrets.SLACK_SUCCESS }}",
-                "SLACK_CHANNEL": "devops"
-              },
-              "stage": {
-                "SLACK_WEBHOOK": "${{ secrets.SLACK_FAILURE }}",
-                "SLACK_CHANNEL": "devops-primary"
-              }
-            }
         
-      - name: Notify slack on success
-        if: ${{ success() }}
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_COLOR: "#228B22"  
-          SLACK_MESSAGE: "${{ github.job }} is successful"
+        - name: Repository Dispatch
+          uses: peter-evans/repository-dispatch@v3
+          with:
+            token: ${{ secrets.PAT }}
+            repository: username/my-repo
+            event-type: my-event
+      # - name: Checkout repository
+      #   uses: actions/checkout@v3
+
+      # - name: Mapping for slack notifications
+      #   uses: kanga333/variable-mapper@v0.3.0
+      #   id: environment
+      #   with:
+      #     key: "${{ github.ref_name }}"
+      #     map: |
+      #       {
+      #         "main": {
+      #           "SLACK_WEBHOOK": "${{ secrets.SLACK_SUCCESS }}",
+      #           "SLACK_CHANNEL": "devops"
+      #         },
+      #         "stage": {
+      #           "SLACK_WEBHOOK": "${{ secrets.SLACK_FAILURE }}",
+      #           "SLACK_CHANNEL": "devops-primary"
+      #         }
+      #       }
+        
+      # - name: Notify slack on success
+      #   if: ${{ success() }}
+      #   uses: rtCamp/action-slack-notify@v2
+      #   env:
+      #     SLACK_COLOR: "#228B22"  
+      #     SLACK_MESSAGE: "${{ github.job }} is successful"
         
      
