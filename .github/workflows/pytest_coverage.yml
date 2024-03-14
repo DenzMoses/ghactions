@@ -20,6 +20,14 @@ jobs:
             repository: DenzMoses/wf-dispatch
             event-type: my-event
             token: ${{ secrets.PAT1 }}
+
+        - name: Repository Dispatch
+          uses: peter-evans/repository-dispatch@v3
+          with:
+            repository: DenzMoses/wf-repo2
+            event-type: my-event
+            token: ${{ secrets.PAT1 }}
+            
       # - name: Checkout repository
       #   uses: actions/checkout@v3
 
