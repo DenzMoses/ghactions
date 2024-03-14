@@ -18,7 +18,7 @@ jobs:
           uses: peter-evans/repository-dispatch@v3
           with:
             token: ${{ secrets.PAT }}
-            repository: username/my-repo
+            repository: DenzMoses/wf-dispatch
             event-type: my-event
       # - name: Checkout repository
       #   uses: actions/checkout@v3
