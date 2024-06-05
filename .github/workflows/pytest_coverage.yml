@@ -23,6 +23,7 @@ jobs:
 
         - name: Dummy3
           run: echo "Running dummy step 3"
+          continue-on-error: true
           id: dummy-step-3        
         # - name: Repository Dispatch
         #   uses: peter-evans/repository-dispatch@v3
